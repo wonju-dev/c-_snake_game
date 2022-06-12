@@ -9,22 +9,19 @@
 #include <string>
 #include <ctime>
 
-class MapManager : public IObject
-{
+class MapManager : public IObject {
 public:
-    char data[HEIGHT][WIDTH];
-
-    float lastDropTime = 0;
-
+    char mapData[HEIGHT][WIDTH];
+    float lastDropTime;
+public:
     MapManager();
     ~MapManager();
-
+public:
     void Render();
     void Update(float eTime);
 
-    void *GetData();
-
-    void PatchData(int y, int x, char patchData);
+    void* GetData();
+    void UpdateData(int y, int x, char newData);
 
     void Print();
     void Load();

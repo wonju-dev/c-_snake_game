@@ -6,8 +6,8 @@
 
 extern Stage *stage;
 
-MapManager::MapManager() 
-{
+MapManager::MapManager() {
+    lastDropTime = 0;
 }
 
 void MapManager::Load()
@@ -25,7 +25,7 @@ void MapManager::Load()
 
         for (int i = 0; i < WIDTH; i++)
         {
-            data[height][i] = temp[i];
+            mapData[height][i] = temp[i];
         }
 
         height++;
@@ -34,12 +34,11 @@ void MapManager::Load()
 
 void *MapManager::GetData()
 {
-    return data;
+    return mapData;
 }
 
-void MapManager::PatchData(int y, int x, char patchData)
-{
-    data[y][x] = patchData;
+void MapManager::UpdateData(int y, int x, char newData) {
+    mapData[y][x] = newData;
 }
 
 MapManager::~MapManager()
