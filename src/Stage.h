@@ -1,11 +1,3 @@
-/**
- * @file Stage.h
- * 
- * @brief Stage의 헤더 파일입니다.
- * 
- * @author parkgeonhu, mindaein
- */
-
 #pragma once
 #include "IObject.h"
 

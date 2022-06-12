@@ -1,16 +1,7 @@
-/**
- * @file Item.h
- * 
- * @brief Item의 헤더 파일입니다.
- * 
- * @author parkgeonhu
- */
 #pragma once
-#include <vector>
-#include <cstdlib>
-#include "CharPosition.h"
+
+#include "Point.h"
 #include "IObject.h"
-#include <ncurses.h>
 #include <string>
 
 class Item : public IObject
@@ -23,9 +14,8 @@ public:
     Item(std::string t, float eTime);
     ~Item();
 
-    CharPosition position;
-
-    CharPosition getRandPosition();
+    Point position;
+    Point getRandPosition();
 
     void Update(float eTime);
     void Render();

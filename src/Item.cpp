@@ -1,26 +1,28 @@
-/**
- * @file Item.cpp
- * 
- * @brief Item 파일입니다.
- * 
- * @author parkgeonhu
- */
 #include "Item.h"
-#include "CharPosition.h"
-#include "myFunction.h"
+#include "Point.h"
+#include "Utils.h"
 #include "MapManager.h"
+#include "GameScene.h"
+#include "Snake.h"
 
-extern MapManager *mapManager;
+extern MapManager* mapManager;
+extern Snake* snake;
 
-CharPosition Item::getRandPosition()
+Point Item::getRandPosition()
 {
-    CharPosition temp;
-    while (1)
-    {
+    Point temp;
+
+    while (true) {
         int x = rand() % (WIDTH);
         int y = rand() % (HEIGHT);
-        if (mapManager->data[y][x] == '0')
-        {
+
+        if (mapManager->data[y][x] == '0') {
+            float distFromHead = GetDistance(Point(x, y), snake->GetHead());
+            float distFromTail = GetDistance(Point(x, y), snake->GetTail());
+            int snakeSize = snake->GetSize();
+            if (distFromHead < snakeSize + 2 || distFromTail < snakeSize + 2)
+                continue;
+            
             temp.x = x;
             temp.y = y;
             break;
@@ -29,21 +31,17 @@ CharPosition Item::getRandPosition()
     return temp;
 }
 
-Item::Item(std::string t, float eTime) : type(t), dropTime(eTime)
-{
-    CharPosition temp = getRandPosition();
+Item::Item(std::string t, float dt) : type(t), dropTime(dt) {
+    Point temp = getRandPosition();
     position.x = temp.x;
     position.y = temp.y;
 }
 
-Item::~Item()
-{
+Item::~Item() {
 }
 
-void Item::Update(float eTime)
-{
+void Item::Update(float dt) {
 }
 
-void Item::Render()
-{
+void Item::Render() {
 }

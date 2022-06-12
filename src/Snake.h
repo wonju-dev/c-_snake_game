@@ -1,37 +1,27 @@
-/**
- * @file Snake.h
- * 
- * @brief Snake의 헤더 파일입니다.
- * 
- * @author parkgeonhu, mindaein
- */
-
 #pragma once
 #include <ncurses.h>
 #include <vector>
-#include "CharPosition.h"
-#include "myFunction.h"
+#include "Point.h"
+#include "Utils.h"
 #include "GameOverScene.h"
 #include "IScene.h"
 #include "IObject.h"
 
-using int32 = int;
-
-class Snake : public IObject
-{
-public:
-	Snake();
-	~Snake();
-
-	std::vector<CharPosition> entire;
-	bool isDied = false;
+class Snake : public IObject {
+private:
+	bool isDead = false;
 	char partchar, direction;
 	int choiceCount;
 	int select;
-	int maxwidth, maxheight;
+	int maxWidth, maxheight;
 	bool isGrow = false;
 	bool isShrink = false;
-
+public:
+	Snake();
+	~Snake();
+public:
+	std::vector<Point> entire;
+	
 	void Update(float eTime);
 
 	void PushData();
@@ -43,8 +33,12 @@ public:
 	void Grow();
 	void Shrink();
 
-	CharPosition GetHead();
-	CharPosition GetTail();
+	bool& IsDead();
+	int GetDirection() const;
+
+	Point GetHead();
+	Point GetTail();
+	int GetSize();
 
 	void SetHeadPos(int y, int x);
 

@@ -6,7 +6,8 @@
  * @author parkgeonhu, mindaein
  */
 #include "MapManager.h"
-#include "myFunction.h"
+#include "Utils.h"
+#include "Stage.h"
 #include <vector>
 #include <fstream>
 

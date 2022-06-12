@@ -1,12 +1,6 @@
-/**
- * @file myFunction.h
- * 
- * @brief myFunction의 헤더 파일입니다.
- * 
- * @author parkgeonhu, mindaein
- */
 #pragma once
 #include "IScene.h"
+#include "Point.h"
 #include <chrono>
 #include <iostream>
 
@@ -19,8 +13,9 @@
 using namespace std;
 
 void Init();
-void Update(float eTime); //Elapsed Time
+void Update(float dt); //Elapsed Time
 void Render();
-void Destroy();
-float GetElapsedTime();
+void Release();
+float GetDeltaTime();
+float GetDistance(Point p1, Point p2);
 void ChangeScene(IScene *p, bool nowSceneErase = true);

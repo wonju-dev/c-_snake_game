@@ -1,15 +1,7 @@
-/**
- * @file MapManager.h
- * 
- * @brief MapManager의 헤더 파일입니다.
- * 
- * @author parkgeonhu, mindaein
- */
 #pragma once
 #include "IObject.h"
-#include "CharPosition.h"
-#include "myFunction.h"
-#include "Snake.h"
+#include "Point.h"
+#include "Utils.h"
 #include "IScene.h"
 #include <vector>
 #include <ncurses.h>

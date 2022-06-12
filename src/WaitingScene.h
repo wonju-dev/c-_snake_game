@@ -1,12 +1,11 @@
-/**
- * @file WaitingScene.h
- * 
- * @brief WaitingScene의 헤더 파일입니다.
- * 
- * @author parkgeonhu, mindaein
- */
-
 #pragma once
+
+#include "IScene.h"
+
+class Stage;
+class GameScene;
+
+/*
 #include "IScene.h"
 #include "Stage.h"
 #include "myFunction.h"
@@ -14,11 +13,12 @@
 #include <ncurses.h>
 #include <cstdlib>
 #include <ctime>
+*/
 
 class WaitingScene : public IScene
 {
 public:
-	int maxwidth, maxheight;
+	int maxWidth, maxheight;
 
 	WaitingScene();
 	~WaitingScene();
@@ -30,6 +30,4 @@ public:
 	void ClearCentre(float x, float y);
 	int UserInput();
 	int IsUserReady();
-
-	// clear the screen and centre the cursor
 };

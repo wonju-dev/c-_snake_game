@@ -1,21 +1,14 @@
-/**
- * @file GameOverScene.cpp
- * 
- * @brief GameOverScene 파일입니다.
- * 
- * @author parkgeonhu, mindaein
- */
-#include "IScene.h"
+#include "GameOverScene.h"
 #include "GameScene.h"
 #include "WaitingScene.h"
+#include "Utils.h"
 #include <ncurses.h>
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 
-GameOverScene::GameOverScene()
-{
+GameOverScene::GameOverScene() {
 }
 
 GameOverScene::~GameOverScene() {}
@@ -39,8 +32,8 @@ void GameOverScene::ClearCentre(float x, float y)
 {
     initscr();
     noecho();
-    getmaxyx(stdscr, maxheight, maxwidth);
-    move((maxheight / 3 * 2 / y), (maxwidth / x));
+    getmaxyx(stdscr, maxheight, maxWidth);
+    move((maxheight / 3 * 2 / y), (maxWidth / x));
 }
 
 // receive user confirmation

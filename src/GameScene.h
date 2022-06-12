@@ -1,33 +1,16 @@
 #pragma once
+
 #include "IScene.h"
-#include "WaitingScene.h"
-#include "Stage.h"
-#include "Snake.h"
 #include "ItemManager.h"
 #include "GateManager.h"
 #include "Format.h"
-#include <iostream>
-/**
- * @file GameScene.h
- * 
- * @brief GameScene의 헤더 파일입니다.
- * 
- * @author parkgeonhu, mindaein
- */
-#include <vector>
-#include <ncurses.h>
-#include <cstdlib>
-#include <ctime>
 
-#include "MapManager.h"
-
-using int32 = int;
-
-class GameScene : public IScene
-{
+class GameScene : public IScene {
+private:
+	const char spriteTable[10] = " -XHBGPO ";
 public:
-	int32 score;
-	int32 maxwidth, maxheight;
+	int score;
+	int maxWidth, maxheight;
 
 	char edgechar;
 

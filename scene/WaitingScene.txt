@@ -5,20 +5,20 @@
 ----------------------------------------------------------                                                           
 ----------------------------------------------------------
 ----------------------------------------------------------                                                   
-0000000000000000000000000000000000000000000000000000000000
-000       000   000  000        000  00    000         000
-000  00000000    00  000  0000  000  0   00000  0000000000
-000       000  0  0  000        000    0000000         000
-00000000  000  00    000  0000  000  0   00000  0000000000
-000       000  000   000  0000  000  00    000         000
-0000000000000000000000000000000000000000000000000000000000
-000         000000         000          000            000
-000  0000000000000  00000  000  00  00  000  0000000000000
-000  000       000  00000  000  00  00  000  0000000000000
-000  00000000  000         000  00  00  000            000
-000        00  000  00000  000  00  00  000  0000000000000
-0000000000000  000  00000  000  00  00  000            000
-0000000000000000000000000000000000000000000000000000000000                                                          
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+ooo       ooo   ooo  ooo        ooo  oo    ooo         ooo
+ooo  oooooooo    oo  ooo  oooo  ooo  o   ooooo  oooooooooo
+ooo       ooo  o  o  ooo        ooo    ooooooo         ooo
+oooooooo  ooo  oo    ooo  oooo  ooo  o   ooooo  oooooooooo
+ooo       ooo  ooo   ooo  oooo  ooo  oo    ooo         ooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+ooo         oooooo         ooo          ooo            ooo
+ooo  ooooooooooooo  ooooo  ooo  oo  oo  ooo  ooooooooooooo
+ooo  ooo       ooo  ooooo  ooo  oo  oo  ooo  ooooooooooooo
+ooo  oooooooo  ooo         ooo  oo  oo  ooo            ooo
+ooo        oo  ooo  ooooo  ooo  oo  oo  ooo  ooooooooooooo
+ooooooooooooo  ooo  ooooo  ooo  oo  oo  ooo            ooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo                                                          
 ----------------------------------------------------------                                                          
 ----------------------------------------------------------                                                          
 ----------------------------------------------------------                                                          

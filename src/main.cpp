@@ -1,27 +1,14 @@
-/**
- * @file GameCoverScene.cpp
- * 
- * @brief GameCoverScene 파일입니다.
- * 
- * @author parkgeonhu
- */
-#include <iostream>
-#include <vector>
-#include <ncurses.h>
-#include <cstdlib>
-#include <ctime>
-#include "myFunction.h"
+#include "Utils.h"
 
-int maxheight, maxwidth;
+int maxwidth;
+int maxHeight;
 
-int main()
-{
+int main() {
 	Init();
-	do
-	{
-		Update(GetElapsedTime());
+	while (true) {
+		Update(GetDeltaTime());
 		Render();
-	} while (true);
-	Destroy();
+	}
+	Release();
 	return 0;
 }

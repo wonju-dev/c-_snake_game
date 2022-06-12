@@ -1,14 +1,7 @@
-/**
- * @file WaitingScene.cpp
- * 
- * @brief WaitingScene 파일입니다.
- * 
- * @author parkgeonhu, mindaein
- */
-
 #include "WaitingScene.h"
 #include "GameScene.h"
-#include "myFunction.h"
+#include "Utils.h"
+#include "Stage.h"
 #include <fstream>
 
 Stage *stage;
@@ -28,16 +21,11 @@ WaitingScene::~WaitingScene()
 void WaitingScene::Update(float eTime)
 {
     char answer;
-    int temp;
-    do
-    {
-        answer = IsUserReady();
-        if (answer == 'n')
-            exit(0);
-        temp = (int)answer - 49;
-    } while (temp < 0 || temp > 2);
+    answer = IsUserReady();
+    if (answer == 'n')
+        exit(0);
 
-    stage->setNowStage((int)answer - 49);
+    stage->setNowStage(0);
 
     ChangeScene(new GameScene());
 }
@@ -51,12 +39,11 @@ void WaitingScene::ClearCentre(float x, float y)
     clear(); // clear the screen if the game is played for the 2nd time
     initscr();
     noecho();
-    getmaxyx(stdscr, maxheight, maxwidth);
+    getmaxyx(stdscr, maxheight, maxWidth);
 
-    //myFunction에 있는 변수
     getmaxyx(stdscr, currentHeight, currentWidth);
 
-    move((maxheight / y), (maxwidth / x));
+    move((maxheight / y), (maxWidth / x));
 }
 
 // receive user confirmation
@@ -73,7 +60,7 @@ int WaitingScene::UserInput()
 void WaitingScene::Load()
 {
     std::ifstream readFile;
-    string src = "scene/WaitingScene.txt";
+    std::string src = "scene/WaitingScene.txt";
 
     readFile.open(src);
     int height = 0;
@@ -91,7 +78,7 @@ void WaitingScene::Load()
                 addch('-');
             }
 
-            else if (temp[width] == '0')
+            else if (temp[width] == 'o')
             {
                 move(height, width);
                 addch(char(219));
@@ -115,9 +102,8 @@ int WaitingScene::IsUserReady()
 
     Load();
 
-    move(25, 5);
-    printw("Welcome to the Snake Game. Press 1 or 2 or 3 to start");
+    move(25, 20);
+    printw("Press any key to start");
     move(30, 14);
-    printw("made by parkgeonhu & mindaein");
     return UserInput();
 }

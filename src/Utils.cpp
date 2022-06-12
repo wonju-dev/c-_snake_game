@@ -1,12 +1,6 @@
-/**
- * @file myFunction.cpp
- * 
- * @brief myFunction 파일입니다.
- * 
- * @author parkgeonhu, mindaein
- */
-#include "myFunction.h"
+#include "Utils.h"
 #include "WaitingScene.h"
+#include <cmath>
 
 IScene *nowScene;
 bool lkey[256], rkey[256];
@@ -32,17 +26,21 @@ void Render()
 	nowScene->Render();
 }
 
-void Destroy()
+void Release()
 {
 	delete nowScene;
 }
 
-float GetElapsedTime()
+float GetDeltaTime()
 {
 	auto endTime = std::chrono::steady_clock::now();
 	std::chrono::duration<float> elapsed_seconds = endTime - startTime;
 	float eTime = (float)elapsed_seconds.count();
 	return eTime;
+}
+
+float GetDistance(Point p1, Point p2) {
+	return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
 }
 
 void ChangeScene(IScene *p, bool nowSceneErase)

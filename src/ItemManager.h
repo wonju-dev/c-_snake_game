@@ -1,25 +1,13 @@
-/**
- * @file ItemManager.h
- * 
- * @brief ItemManger 헤더 파일입니다.
- * 
- * @author parkgeonhu, mindaein
- */
 #pragma once
-#include "IObject.h"
-#include "CharPosition.h"
-#include "Snake.h"
-#include "Item.h"
-#include <vector>
-#include <ncurses.h>
-#include <cstdlib>
-#include <string>
-#include <ctime>
 
-class ItemManager : public IObject
-{
+class Item;
+#include "IObject.h"
+#include <vector>
+#include <string>
+
+class ItemManager : public IObject {
 public:
-    int maxheight, maxwidth;
+    int maxheight, maxWidth;
 
     std::vector<Item> data;
 
@@ -29,8 +17,8 @@ public:
     ~ItemManager();
 
     void Render();
-    void Update(float eTime);
-    void PositionItem(std::string check, float eTime);
+    void Update(float dt);
+    void PositionItem(std::string check, float dt);
     void DeleteCollisionData(int y, int x);
 
     void PushData();

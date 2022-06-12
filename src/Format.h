@@ -1,10 +1,3 @@
-/**
- * @file Format.h
- * 
- * @brief Format의 헤더 파일입니다.
- * 
- * @author mindaein
- */
 #pragma once
 #include <ncurses.h>
 #include <vector>
@@ -15,7 +8,7 @@
 class Format : public IObject
 {
 public:
-    int maxheight, maxwidth, digitTime;
+    int maxHeight, maxWidth, digitTime;
 
     int gameTime;
 
