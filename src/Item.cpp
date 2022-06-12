@@ -31,7 +31,7 @@ Point Item::getRandPosition() {
     return temp;
 }
 
-Item::Item(std::string t, float dt) : type(t), dropTime(dt) {
+Item::Item(ItemType t, float dt) : type(t), dropTime(dt) {
     Point temp = getRandPosition();
     position.x = temp.x;
     position.y = temp.y;

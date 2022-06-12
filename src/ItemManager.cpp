@@ -78,19 +78,19 @@ void ItemManager::Update(float dt) {
 
 void ItemManager::PositionItem(std::string check, float dt) {
     if (check == "fruit") {
-        data.push_back(Item("fruit", dt));
+        data.push_back(Item(ItemType::Fruit, dt));
     }
     else if (check == "poison") {
-        data.push_back(Item("poison", dt));
+        data.push_back(Item(ItemType::Poision, dt));
     }
 }
 
 void ItemManager::PushData() {
     for (int i = 0; i < data.size(); ++i) {
-        if (data[i].type == "fruit") {
+        if (data[i].type == ItemType::Fruit) {
             mapManager->UpdateData(data[i].position.y, data[i].position.x, '5');
         }
-        else if (data[i].type == "poison") {
+        else if (data[i].type == ItemType::Poision) {
             mapManager->UpdateData(data[i].position.y, data[i].position.x, '6');
         }
     }

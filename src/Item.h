@@ -4,14 +4,18 @@
 #include "IObject.h"
 #include <string>
 
-class Item : public IObject
-{
+enum class ItemType {
+    None,
+    Poision,
+    Fruit
+};
+
+class Item : public IObject {
 public:
     float dropTime = 0;
+    ItemType type = ItemType::None;
 
-    std::string type = "none";
-
-    Item(std::string t, float eTime);
+    Item(ItemType t, float eTime);
     ~Item();
 
     Point position;
