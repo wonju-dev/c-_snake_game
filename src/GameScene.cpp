@@ -95,16 +95,30 @@ void GameScene::ProcessCollision()
 }
 
 bool isClear() {
-  if (player->GetLengthScore() >= stage->mission[stage->getNowStage()][0] && player->GetGrowScore() >= stage->mission[stage->getNowStage()][1] && player->GetPoisonScore() >= stage->mission[stage->getNowStage()][2] && player->GetGateScore() == stage->mission[stage->getNowStage()][3])
-  {
-    return true;
+  int scoreTable[4] = {
+    player->GetLengthScore(),
+    player->GetGrowScore(),
+    player->GetPoisonScore(),
+    player->GetGateScore()
+  };
+
+  bool isClear = true;
+  for (int i = 0; i < 4; ++i) {
+    if (scoreTable[i] < stage->getMissionData(i)) {
+      isClear = false;
+      break;
+    }
   }
-  return false;
+
+  return isClear;
 }
 
 void GameScene::Update(float eTime) {
   if (isClear()) {
-    stage->nowStage += 1;
+    ++stage->nowStage;
+    if (stage->nowStage > 4) {
+      exit(0);
+    }
     ChangeScene(new GameCoverScene());
     return;
   }

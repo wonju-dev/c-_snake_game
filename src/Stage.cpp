@@ -9,12 +9,16 @@ Stage::Stage(int nextStage) {
 Stage::~Stage() {
 }
 
-int Stage::getNowStage() { 
+int Stage::getNowStage() const { 
     return nowStage; 
 }
 
-int* Stage::getNowMission() {
+const int* Stage::getNowMission() const {
     return mission[nowStage]; 
+}
+
+int const Stage::getMissionData(int index) const {
+    return getNowMission()[index];
 }
 
 void Stage::setNowStage(int nowStage) { 

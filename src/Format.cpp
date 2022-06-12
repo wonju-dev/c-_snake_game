@@ -108,7 +108,7 @@ char Format::Complete(int present, int goal) {
 }
 
 void Format::DrawMission() {
-    int *nowMission = stage->getNowMission();
+    const int* nowMission = stage->getNowMission();
 
     move(maxHeight / 2, maxWidth / 5 * 4 + 1);
     printw("< M I S S I O N >");
