@@ -47,20 +47,18 @@ GameScene::GameScene()
 
 GameScene::~GameScene()
 {
-  //delete mapManager;
   nodelay(stdscr, false);
   endwin();
 }
 
-// initialise the game window
 void GameScene::InitGameWindow()
 {
-  initscr(); // initialise the screen
+  initscr(); 
   nodelay(stdscr, TRUE);
-  keypad(stdscr, true);                  // initialise the keyboard: we can use arrows for directions
-  noecho();                              // user input is not displayed on the screen
-  curs_set(0);                           // cursor symbol is not not displayed on the screen (Linux)
-  getmaxyx(stdscr, maxheight, maxWidth); // define dimensions of game window
+  keypad(stdscr, true);                  
+  noecho();                              
+  curs_set(0);                           
+  getmaxyx(stdscr, maxheight, maxWidth); 
   return;
 }
 
@@ -70,8 +68,6 @@ void GameScene::ProcessCollision()
   int x = snake->GetHead().x;
 
   char temp = mapManager->data[y][x];
-
-  // mvaddch(2, maxWidth / 5 * 4 + 4, mapManager->data[y][x]);
 
   if (temp == '1' || snake->entire.size() <= 4)
   {

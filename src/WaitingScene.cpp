@@ -36,7 +36,7 @@ void WaitingScene::Render()
 
 void WaitingScene::ClearCentre(float x, float y)
 {
-    clear(); // clear the screen if the game is played for the 2nd time
+    clear(); 
     initscr();
     noecho();
     getmaxyx(stdscr, maxheight, maxWidth);
@@ -46,7 +46,6 @@ void WaitingScene::ClearCentre(float x, float y)
     move((maxheight / y), (maxWidth / x));
 }
 
-// receive user confirmation
 int WaitingScene::UserInput()
 {
     int UserInput = getch();
@@ -95,7 +94,6 @@ void WaitingScene::Load()
     }
 }
 
-// print start menu
 int WaitingScene::IsUserReady()
 {
     ClearCentre(3, 2.5);

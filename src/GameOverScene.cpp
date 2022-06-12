@@ -27,7 +27,6 @@ void GameOverScene::Update(float eTime)
 }
 void GameOverScene::Render() {}
 
-// clear the screen and centre the cursor
 void GameOverScene::ClearCentre(float x, float y)
 {
     initscr();
@@ -36,7 +35,6 @@ void GameOverScene::ClearCentre(float x, float y)
     move((maxheight / 3 * 2 / y), (maxWidth / x));
 }
 
-// receive user confirmation
 int GameOverScene::UserInput()
 {
     int UserInput = getch();
@@ -78,7 +76,6 @@ void GameOverScene::Load()
     }
 }
 
-// print ask to play again
 int GameOverScene::AskUserToPlayAgain()
 {
     ClearCentre(3.5, 2);

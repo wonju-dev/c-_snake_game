@@ -87,7 +87,6 @@ Point GateManager::GetNextGate()
         possibleLeft = true;
     }
 
-    //진입방향과 일치하는 경우
     if (possibleLeft && direction == 'l')
     {
         tempPosX -= 1;
@@ -105,7 +104,6 @@ Point GateManager::GetNextGate()
         tempPosY += 1;
     }
 
-    //snake의 direction을 바꿔야하는 경우
     else if (direction == 'u' || direction == 'd')
     {
         if (possibleLeft)
@@ -167,14 +165,12 @@ void GateManager::Update(float eTime)
 
     if (isEntering)
     {
-        //꼬리가 다음 게이트 지시 위치로 갔는가
         Point tail = snake->GetTail();
         if (nextPos.x == tail.x && nextPos.y == tail.y)
         {
             isRemove = true;
         }
 
-        //게이트를 삭제해야한다면 바로 map에 반영하기
         if (isRemove == true)
         {
             for (int i = data.size() - 1; i >= 0; i--)
@@ -200,7 +196,6 @@ void GateManager::Update(float eTime)
 
     PushData();
 
-    //Gate drop
     if (eTime - lastDropTime > DROP_GATE_INTERVAL && isEntering == false && snake->entire.size() >= 4)
     {
         if (isCreated == false)

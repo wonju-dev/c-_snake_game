@@ -13,7 +13,7 @@ using namespace std;
 #define HEIGHT 24
 
 void Init();
-void Update(float dt); //Elapsed Time
+void Update(float dt); 
 void Render();
 void Release();
 float GetDeltaTime();

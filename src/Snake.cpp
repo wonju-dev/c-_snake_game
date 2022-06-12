@@ -100,7 +100,6 @@ void Snake::Update(float eTime) {
         {
             entire.insert(entire.begin(), Point(entire[0].x, entire[0].y + 1));
         }
-        //isGrow는 false일 때 entire 벡터에 갱신된 head가 추가되면 맨 뒤에 있는 entire 원소 제거
         if (isGrow == false)
         {
             CutTail();
