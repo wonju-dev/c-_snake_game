@@ -19,9 +19,9 @@ void GameOverScene::Update(float eTime)
     Load();
     char answer = AskUserToPlayAgain();
 
-    if (answer == 'y')
+    if (answer == 'y') {
         ChangeScene(new GameScene());
-
+    }
     else if (answer == 'n')
         exit(0);
 }

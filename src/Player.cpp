@@ -1,12 +1,12 @@
 #include "Player.h"
 
 Player::Player() {
-        lengthScore = 0;
-        growScore = 0;
-        poisonScore = 0;
-        gateScore = 0;
-        totalScore = 0;
-    }
+    lengthScore = 0;
+    growScore = 0;
+    poisonScore = 0;
+    gateScore = 0;
+    totalScore = 0;
+}
 Player::~Player() {}
 
 int& Player::GetLengthScore() {

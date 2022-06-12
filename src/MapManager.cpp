@@ -19,7 +19,6 @@ MapManager::MapManager() // load txt file. named stageName. ex) 1.txt 2.txt 3.tx
 
 void MapManager::Load()
 {
-
     std::ifstream readFile;
     string src = "map/map" + std::to_string(stage->getNowStage() + 1) + ".txt";
 

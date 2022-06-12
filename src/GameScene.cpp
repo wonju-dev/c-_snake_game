@@ -3,6 +3,7 @@
  */
 
 #include "GameScene.h"
+#include "GameCoverScene.h"
 #include "WaitingScene.h"
 #include "Snake.h"
 #include "ItemManager.h"
@@ -107,24 +108,23 @@ bool isClear()
 }
 
 void GameScene::Update(float eTime) {
-  if (isClear())
-  {
-    stage->nowStage++;
-    ChangeScene(new GameScene());
+  if (isClear()) {
+    int nextStage = stage->nowStage + 1;
+    ChangeScene(new GameCoverScene());
+    return;
   }
 
   player->GetLengthScore() = snake->entire.size();
   player->GetTotalScore() = stage->nowStage;
 
   snake->Update(eTime);
-  if (snake->IsCollision())
-  {
+  if (snake->IsCollision()) {
     ProcessCollision();
   }
-  if (snake->IsDead())
-  {
+  if (snake->IsDead()) {
     ChangeScene(new GameOverScene());
   }
+
   snake->PushData();
   format->Update(eTime);
   itemManager->Update(eTime);

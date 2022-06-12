@@ -20,7 +20,8 @@ Point Item::getRandPosition()
             float distFromHead = GetDistance(Point(x, y), snake->GetHead());
             float distFromTail = GetDistance(Point(x, y), snake->GetTail());
             int snakeSize = snake->GetSize();
-            if (distFromHead < snakeSize + 2 || distFromTail < snakeSize + 2)
+            int padding = 3;
+            if (distFromHead < snakeSize + padding || distFromTail < snakeSize + padding)
                 continue;
             
             temp.x = x;
