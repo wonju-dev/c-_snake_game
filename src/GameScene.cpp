@@ -1,7 +1,3 @@
-/**
- * @file GameScene.cpp
- */
-
 #include "GameScene.h"
 #include "GameCoverScene.h"
 #include "WaitingScene.h"

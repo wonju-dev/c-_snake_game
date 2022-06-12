@@ -19,10 +19,8 @@ ItemManager::~ItemManager() {
 void ItemManager::Render() {
 }
 
-bool isExceedTime(Item item, float dt)
-{
-    if (dt - item.dropTime > 10)
-    {
+bool isExceedTime(Item item, float dt) {
+    if (dt - item.dropTime > 10) {
         return true;
     }
     return false;
@@ -31,23 +29,19 @@ bool isExceedTime(Item item, float dt)
 void ItemManager::DeleteCollisionData(int y, int x) {
     int target;
 
-    for (int i = 0; i < data.size(); i++)
-    {
-        if (data[i].position.x == x && data[i].position.y == y)
-        {
+    for (int i = 0; i < data.size(); ++i) {
+        if (data[i].position.x == x && data[i].position.y == y) {
             target = i;
         }
     }
     data.erase(data.begin() + target);
 }
 
-void ItemManager::Update(float dt)
-{
+void ItemManager::Update(float dt) {
     int *temp = new int[data.size()];
     std::vector<Item>::iterator iter;
 
-    if (dt - lastDropTime > DROP_ITEM_INTERVAL && data.size() <= 3)
-    {
+    if (dt - lastDropTime > DROP_ITEM_INTERVAL && data.size() <= 3) {
         int randNum = rand() % 2;
         if (randNum == 0)
         {
@@ -65,14 +59,12 @@ void ItemManager::Update(float dt)
         if (isExceedTime(data[i], dt)) {
             temp[i] = 1;
         }
-        else
-        {
+        else {
             temp[i] = 0;
         }
     }
 
-    for (int i = data.size() - 1; i >= 0; --i)
-    {
+    for (int i = data.size() - 1; i >= 0; --i) {
         if (temp[i] == 1) {
             mapManager->UpdateData(data[i].position.y, data[i].position.x, '0');
             data.erase(data.begin() + i);
@@ -84,8 +76,7 @@ void ItemManager::Update(float dt)
     PushData();
 }
 
-void ItemManager::PositionItem(std::string check, float dt)
-{
+void ItemManager::PositionItem(std::string check, float dt) {
     if (check == "fruit") {
         data.push_back(Item("fruit", dt));
     }
@@ -94,8 +85,7 @@ void ItemManager::PositionItem(std::string check, float dt)
     }
 }
 
-void ItemManager::PushData()
-{
+void ItemManager::PushData() {
     for (int i = 0; i < data.size(); ++i) {
         if (data[i].type == "fruit") {
             mapManager->UpdateData(data[i].position.y, data[i].position.x, '5');

@@ -57,16 +57,13 @@ void GameOverScene::Load()
         char temp[120];
         readFile.getline(temp, 120);
 
-        for (int width = 0; width < 58; width++)
-        {
-            if (temp[width] == ' ')
-            {
+        for (int width = 0; width < 58; ++width) {
+            if (temp[width] == ' ') {
                 move(height + 2, width + 2);
                 addch(' ');
             }
 
-            else
-            {
+            else {
                 move(height + 2, width + 2);
                 addch(char(219));
             }
@@ -76,8 +73,7 @@ void GameOverScene::Load()
     }
 }
 
-int GameOverScene::AskUserToPlayAgain()
-{
+int GameOverScene::AskUserToPlayAgain() {
     ClearCentre(3.5, 2);
     move(7, 25);
     printw("Restart? (y/n)");

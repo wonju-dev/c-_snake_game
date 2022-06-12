@@ -1,7 +1,6 @@
 #pragma once
 #include "IScene.h"
 #include "Point.h"
-#include <chrono>
 #include <iostream>
 
 using namespace std;
@@ -19,3 +18,4 @@ void Release();
 float GetDeltaTime();
 float GetDistance(Point p1, Point p2);
 void ChangeScene(IScene *p, bool nowSceneErase = true);
+int GetRandomNumber(int min, int max);

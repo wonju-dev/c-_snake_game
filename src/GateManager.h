@@ -12,10 +12,10 @@ public:
     bool isCreated = false;
     bool isEntering = false;
     float lastDropTime = 0;
-
+public:
     GateManager();
     ~GateManager();
-
+public:
     Point getRandPosition();
 
     void Render();

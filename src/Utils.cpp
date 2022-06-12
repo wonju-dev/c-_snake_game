@@ -1,6 +1,8 @@
 #include "Utils.h"
 #include "WaitingScene.h"
 #include <cmath>
+#include <random>
+#include <chrono>
 
 IScene *nowScene;
 bool lkey[256], rkey[256];
@@ -43,9 +45,15 @@ float GetDistance(Point p1, Point p2) {
 	return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
 }
 
-void ChangeScene(IScene *p, bool nowSceneErase)
-{
+void ChangeScene(IScene *p, bool nowSceneErase) {
 	if (nowSceneErase)
 		delete nowScene;
 	nowScene = p;
+}
+
+int GetRandomNumber(int min, int max) {
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<int> dis(min, max);
+	return dis(gen);
 }

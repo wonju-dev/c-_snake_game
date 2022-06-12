@@ -15,10 +15,9 @@ Point GateManager::getRandPosition()
 {
     Point temp;
     while (true) {
-        int x = rand() % (WIDTH);
-        int y = rand() % (HEIGHT);
-        if (mapManager->GetMapData(y, x) == '1')
-        {
+        int x = GetRandomNumber(0, WIDTH);
+        int y = GetRandomNumber(0, HEIGHT);
+        if (mapManager->GetMapData(y, x) == '1') {
             temp.x = x;
             temp.y = y;
             break;
@@ -27,26 +26,20 @@ Point GateManager::getRandPosition()
     return temp;
 }
 
-GateManager::GateManager()
-{
+GateManager::GateManager() {
 }
 
-GateManager::~GateManager()
-{
+GateManager::~GateManager() {
 }
 
-void GateManager::Render()
-{
+void GateManager::Render() {
 }
 
-Point GateManager::GetNextGate()
-{
+Point GateManager::GetNextGate() {
     int target = 9;
 
-    for (int i = 0; i < data.size(); i++)
-    {
-        if (data[i].x == snake->GetHead().x && data[i].y == snake->GetHead().y)
-        {
+    for (int i = 0; i < data.size(); ++i) {
+        if (data[i].x == snake->GetHead().x && data[i].y == snake->GetHead().y) {
             target = i;
         }
     }
@@ -140,7 +133,7 @@ Point GateManager::GetNextGate()
     return nextPos;
 }
 
-void GateManager::Update(float eTime)
+void GateManager::Update(float dt)
 {
     int *temp = new int[data.size()];
     vector<Point>::iterator iter;
@@ -159,10 +152,10 @@ void GateManager::Update(float eTime)
             isCreated = false;
             isRemove = false;
             isEntering = false;
-            lastDropTime = eTime;
+            lastDropTime = dt;
         }
     }
-    else if (isCreated == true && isEntering == false && eTime - lastDropTime > DROP_GATE_INTERVAL) {
+    else if (isCreated && !isEntering && dt - lastDropTime > DROP_GATE_INTERVAL) {
         for (int i = data.size() - 1; i >= 0; i--) {
             mapManager->UpdateData(data[i].y, data[i].x, '1');
             data.pop_back();
@@ -172,11 +165,11 @@ void GateManager::Update(float eTime)
 
     PushData();
 
-    if (eTime - lastDropTime > DROP_GATE_INTERVAL && isEntering == false && snake->entire.size() >= 4) {
-        if (isCreated == false)
+    if (dt - lastDropTime > DROP_GATE_INTERVAL && !isEntering && snake->entire.size() >= 4) {
+        if (!isCreated)
         {
             PositionGate();
-            lastDropTime = eTime;
+            lastDropTime = dt;
             isCreated = true;
         }
     }
