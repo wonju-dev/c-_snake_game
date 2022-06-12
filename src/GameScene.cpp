@@ -98,8 +98,7 @@ void GameScene::ProcessCollision()
   }
 }
 
-bool isClear()
-{
+bool isClear() {
   if (player->GetLengthScore() >= stage->mission[stage->getNowStage()][0] && player->GetGrowScore() >= stage->mission[stage->getNowStage()][1] && player->GetPoisonScore() >= stage->mission[stage->getNowStage()][2] && player->GetGateScore() == stage->mission[stage->getNowStage()][3])
   {
     return true;
@@ -109,7 +108,7 @@ bool isClear()
 
 void GameScene::Update(float eTime) {
   if (isClear()) {
-    int nextStage = stage->nowStage + 1;
+    stage->nowStage += 1;
     ChangeScene(new GameCoverScene());
     return;
   }
@@ -137,10 +136,8 @@ void GameScene::Render()
 {
   format->Render();
 
-  for (int i = 0; i < HEIGHT; i++)
-  {
-    for (int j = 0; j < WIDTH; j++)
-    {
+  for (int i = 0; i < HEIGHT; i++) {
+    for (int j = 0; j < WIDTH; j++) {
       int spriteIndex = mapManager->data[i][j] - '0';
       if (spriteIndex >= 0 && spriteIndex <= 8) {
         mvaddch(i, j, spriteTable[spriteIndex]);

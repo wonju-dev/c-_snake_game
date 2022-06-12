@@ -9,31 +9,26 @@
 
 extern MapManager *mapManager;
 
-ItemManager::ItemManager()
-{
+ItemManager::ItemManager() {
     getmaxyx(stdscr, maxheight, maxWidth);
 }
 
-ItemManager::~ItemManager()
-{
+ItemManager::~ItemManager() {
 }
 
-void ItemManager::Render()
-{
+void ItemManager::Render() {
 }
 
 bool isExceedTime(Item item, float dt)
 {
-    if (dt - item.dropTime > 5)
+    if (dt - item.dropTime > 10)
     {
         return true;
     }
     return false;
 }
 
-void ItemManager::DeleteCollisionData(int y, int x)
-{
-
+void ItemManager::DeleteCollisionData(int y, int x) {
     int target;
 
     for (int i = 0; i < data.size(); i++)
@@ -49,7 +44,7 @@ void ItemManager::DeleteCollisionData(int y, int x)
 void ItemManager::Update(float dt)
 {
     int *temp = new int[data.size()];
-    vector<Item>::iterator iter;
+    std::vector<Item>::iterator iter;
 
     if (dt - lastDropTime > DROP_ITEM_INTERVAL && data.size() <= 3)
     {

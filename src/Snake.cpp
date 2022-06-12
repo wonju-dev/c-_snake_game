@@ -32,7 +32,7 @@ void Snake::PushData()
 
 void Snake::initBody() {
     for (int i = 0; i < 5; ++i) {
-        entire.push_back(Point(30 + i, 26));
+        entire.push_back(Point(15 + i, 20));
     }
 }
 

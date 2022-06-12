@@ -82,7 +82,7 @@ void GameOverScene::Load()
 int GameOverScene::AskUserToPlayAgain()
 {
     ClearCentre(3.5, 2);
-    move(25, 5);
-    printw("Game Over....! Do you want to play game again? (y/n)");
+    move(7, 25);
+    printw("Restart? (y/n)");
     return UserInput();
 }

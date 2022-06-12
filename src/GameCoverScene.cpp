@@ -2,8 +2,7 @@
 #include "GameCoverScene.h"
 #include "Utils.h"
 
-GameCoverScene::GameCoverScene()
-{
+GameCoverScene::GameCoverScene() {
     refresh();
 }
 

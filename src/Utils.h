@@ -4,13 +4,13 @@
 #include <chrono>
 #include <iostream>
 
+using namespace std;
+
 #define DROP_ITEM_INTERVAL 3.0f
 #define DROP_GATE_INTERVAL 10.0f
 
-#define WIDTH 62
-#define HEIGHT 32
-
-using namespace std;
+#define WIDTH 48
+#define HEIGHT 24
 
 void Init();
 void Update(float dt); //Elapsed Time
