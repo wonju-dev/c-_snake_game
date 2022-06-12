@@ -3,6 +3,7 @@
 #include "Utils.h"
 #include "Stage.h"
 #include <fstream>
+#include <curses.h>
 
 Stage *stage;
 

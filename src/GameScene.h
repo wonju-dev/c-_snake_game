@@ -1,28 +1,27 @@
 #pragma once
 
 #include "IScene.h"
-#include "ItemManager.h"
-#include "GateManager.h"
-#include "Format.h"
+
+class ItemManager;
+class GateManager;
+class UIControl;
 
 class GameScene : public IScene {
 private:
 	const char spriteTable[10] = " -XHBGPO ";
-public:
+	ItemManager *itemManager;
+	GateManager *gateManager;
+	UIControl *format;
+
 	int score;
 	int maxWidth, maxheight;
 
 	char edgechar;
-
+	bool isChangeScene;
+public:
 	GameScene();
 	~GameScene();
-
-	ItemManager *itemManager;
-	GateManager *gateManager;
-
-	Format *format;
-
-	bool isChangeScene;
+public:
 
 	void InitGameWindow();
 	void Update(float eTime);

@@ -1,5 +1,6 @@
 #include "GameScene.h"
 #include "GameCoverScene.h"
+#include <curses.h>
 #include "Utils.h"
 
 GameCoverScene::GameCoverScene() {

@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include "IObject.h"
 
-class Format : public IObject
+class UIControl : public IObject
 {
 public:
     int maxHeight, maxWidth, digitTime;
@@ -68,8 +68,8 @@ public:
              "99999"},
         };
 
-    Format();
-    ~Format();
+    UIControl();
+    ~UIControl();
     void Update(float eTime);
     void Render();
 

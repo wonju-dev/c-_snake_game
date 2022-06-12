@@ -5,30 +5,30 @@
 #include <string>
 #include "ScoreInfo.h"
 #include "Stage.h"
-#include "Format.h"
+#include "UIControl.h"
 
 extern ScoreInfo *player;
 extern Stage *stage;
 
-Format::Format() {
+UIControl::UIControl() {
     gameStartTime = -1;
     gameTime = -1;
     getmaxyx(stdscr, maxHeight, maxWidth);
 }
-Format::~Format() {
+UIControl::~UIControl() {
 }
 
-void Format::Update(float dt)
+void UIControl::Update(float dt)
 {
     DrawTime(dt);
 }
 
-void Format::Render() {
+void UIControl::Render() {
     DrawScore();
     DrawMission();
 }
 
-void Format::DrawScore() {
+void UIControl::DrawScore() {
     move(7, maxWidth / 5 * 4 + 4);
     printw("< S C O R E >");
 
@@ -60,7 +60,7 @@ void Format::DrawScore() {
     }
 }
 
-void Format::DrawTime(float dt)
+void UIControl::DrawTime(float dt)
 {
     int digit = 10;
 
@@ -100,14 +100,14 @@ void Format::DrawTime(float dt)
     }
 }
 
-char Format::Complete(int present, int goal) {
+char UIControl::Complete(int present, int goal) {
     if (present >= goal)
         return 'V';
     else
         return ' ';
 }
 
-void Format::DrawMission() {
+void UIControl::DrawMission() {
     const int* nowMission = stage->getNowMission();
 
     move(maxHeight / 2, maxWidth / 5 * 4 + 1);

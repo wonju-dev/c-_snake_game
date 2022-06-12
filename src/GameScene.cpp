@@ -1,3 +1,5 @@
+#pragma region Includes
+
 #include "GameScene.h"
 #include "GameCoverScene.h"
 #include "WaitingScene.h"
@@ -8,11 +10,16 @@
 #include "ScoreInfo.h"
 #include "MapManager.h"
 #include "Point.h"
+#include "ItemManager.h"
+#include "GateManager.h"
+#include "UIControl.h"
 #include "Stage.h"
 
 #include <unistd.h>
 #include <vector>
 #include <ncurses.h>
+
+#pragma endregion
 
 using namespace std;
 
@@ -35,7 +42,7 @@ GameScene::GameScene()
   itemManager = new ItemManager();
   gateManager = new GateManager();
 
-  format = new Format();
+  format = new UIControl();
 
   InitGameWindow();
   refresh();
