@@ -29,10 +29,11 @@ void GameOverScene::Render() {}
 
 void GameOverScene::ClearCentre(float x, float y)
 {
+    int maxWidth, maxHeight;
     initscr();
     noecho();
-    getmaxyx(stdscr, maxheight, maxWidth);
-    move((maxheight / 3 * 2 / y), (maxWidth / x));
+    getmaxyx(stdscr, maxHeight, maxWidth);
+    move((maxHeight / 3 * 2 / y), (maxWidth / x));
 }
 
 int GameOverScene::UserInput()
@@ -69,7 +70,7 @@ void GameOverScene::Load()
             }
         }
 
-        height++;
+        ++height;
     }
 }
 

@@ -165,7 +165,7 @@ void GateManager::Update(float dt)
 
     PushData();
 
-    if (dt - lastDropTime > DROP_GATE_INTERVAL && !isEntering && snake->entire.size() >= 4) {
+    if (dt - lastDropTime > DROP_GATE_INTERVAL && !isEntering && snake->GetSize() >= 4) {
         if (!isCreated)
         {
             PositionGate();
@@ -190,4 +190,8 @@ void GateManager::PushData() {
     for (int i = 0; i < data.size(); i++) {
         mapManager->UpdateData(data[i].y, data[i].x, '7');
     }
+}
+
+bool& GateManager::IsUsed() {
+    return isUsed;
 }

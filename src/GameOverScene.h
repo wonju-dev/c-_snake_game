@@ -4,11 +4,9 @@
 
 class GameOverScene : public IScene {
 public:
-    int maxWidth, maxheight;
-
     GameOverScene();
     ~GameOverScene();
-
+public:
     void Update(float eTime);
     void Render();
 

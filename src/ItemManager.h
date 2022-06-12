@@ -8,18 +8,14 @@
 
 class ItemManager : public IObject {
 private:
-    std::vector<Item> data;
+    std::map<Point, Item> itemData;
+    float lastDropTime;
 public:
-    int maxheight, maxWidth;
-    float lastDropTime = 0;
-
     ItemManager();
     ~ItemManager();
-
+public:
     void Render();
     void Update(float dt);
     void CreateItem(ItemType type, float dt);
-    void DeleteCollisionData(int y, int x);
-
-    void PushData();
+    void DeleteCollisionData(Point pos);
 };

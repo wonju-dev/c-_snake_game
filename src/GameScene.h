@@ -22,7 +22,6 @@ public:
 	GameScene();
 	~GameScene();
 public:
-
 	void InitGameWindow();
 	void Update(float eTime);
 	void Render();

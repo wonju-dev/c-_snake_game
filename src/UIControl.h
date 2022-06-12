@@ -5,15 +5,13 @@
 #include <cstdlib>
 #include "IObject.h"
 
-class UIControl : public IObject
-{
-public:
-    int maxHeight, maxWidth, digitTime;
-
+class UIControl : public IObject {
+private:
+    int maxWidth;
+    int maxHeight;
+    int digitTime;
     int gameTime;
-
     float gameStartTime;
-
     const char *score[10][5] =
         {
             {"00000",
@@ -67,9 +65,10 @@ public:
              "    9",
              "99999"},
         };
-
+public:
     UIControl();
     ~UIControl();
+public:
     void Update(float eTime);
     void Render();
 

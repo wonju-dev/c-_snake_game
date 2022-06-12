@@ -5,8 +5,6 @@
 class WaitingScene : public IScene
 {
 public:
-	int maxWidth, maxheight;
-
 	WaitingScene();
 	~WaitingScene();
 

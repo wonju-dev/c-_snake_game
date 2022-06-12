@@ -26,14 +26,14 @@ using namespace std;
 extern Stage *stage;
 
 MapManager *mapManager;
-ScoreInfo* player;
+ScoreInfo* scoreInfo;
 Snake* snake;
 
 GameScene::GameScene()
 {
   srand(time(NULL));
 
-  player = new ScoreInfo();
+  scoreInfo = new ScoreInfo();
 
   mapManager = new MapManager();
   mapManager->Load();
@@ -65,49 +65,44 @@ void GameScene::InitGameWindow()
   return;
 }
 
-void GameScene::ProcessCollision()
-{
-  int y = snake->GetHead().y;
-  int x = snake->GetHead().x;
+void GameScene::ProcessCollision() {
+  Point pos = snake->GetHead();
 
-  char temp = mapManager->GetMapData(y, x);
-
-  if (temp == '1' || snake->entire.size() <= 4)
+  char dataChar = mapManager->GetMapData(pos.y, pos.x);
+  if (dataChar == '1' || snake->GetSize() <= 4)
   {
     snake->IsDead() = true;
   }
-  else if (temp == '5')
-  {
-    itemManager->DeleteCollisionData(y, x);
-    player->GetGrowScore() += 1;
+  else if (dataChar == '5') {
+    itemManager->DeleteCollisionData(pos);
+    scoreInfo->GetGrowScore() += 1;
     snake->Grow();
   }
-  else if (temp == '6')
-  {
-    itemManager->DeleteCollisionData(y, x);
-    player->GetPoisonScore() += 1;
+  else if (dataChar == '6') {
+    itemManager->DeleteCollisionData(pos);
+    scoreInfo->GetPoisonScore() += 1;
     snake->Shrink();
   }
-  else if (temp == '7')
+  else if (dataChar == '7')
   {
     Point nextGate = gateManager->GetNextGate();
-    player->GetGateScore() += 1;
-    gateManager->isUsed = true;
+    scoreInfo->GetGateScore() += 1;
+    gateManager->IsUsed() = true;
     snake->SetHeadPos(nextGate.y, nextGate.x);
   }
 }
 
 bool isClear() {
   int scoreTable[4] = {
-    player->GetLengthScore(),
-    player->GetGrowScore(),
-    player->GetPoisonScore(),
-    player->GetGateScore()
+    scoreInfo->GetLengthScore(),
+    scoreInfo->GetGrowScore(),
+    scoreInfo->GetPoisonScore(),
+    scoreInfo->GetGateScore()
   };
 
   bool isClear = true;
   for (int i = 0; i < 4; ++i) {
-    if (scoreTable[i] < stage->getMissionData(i)) {
+    if (scoreTable[i] < stage->GetMissionData(i)) {
       isClear = false;
       break;
     }
@@ -118,16 +113,16 @@ bool isClear() {
 
 void GameScene::Update(float eTime) {
   if (isClear()) {
-    ++stage->nowStage;
-    if (stage->nowStage > 4) {
+    stage->GetNowStage() += 1;
+    if (stage->GetNowStage() > 4) {
       exit(0);
     }
     ChangeScene(new GameCoverScene());
     return;
   }
 
-  player->GetLengthScore() = snake->entire.size();
-  player->GetTotalScore() = stage->nowStage;
+  scoreInfo->GetLengthScore() = snake->GetSize();
+  scoreInfo->GetTotalScore() = stage->GetNowStage();
 
   snake->Update(eTime);
   if (snake->IsCollision()) {

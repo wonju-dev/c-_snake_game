@@ -5,7 +5,7 @@
 #include <vector>
 
 class GateManager : public IObject {
-public:
+private:
     std::vector<Point> data;
     bool isUsed = true;
     bool isRemove = false;
@@ -18,6 +18,7 @@ public:
 public:
     Point getRandPosition();
 
+    bool& IsUsed();
     void Render();
     Point GetNextGate();
     void Update(float eTime);

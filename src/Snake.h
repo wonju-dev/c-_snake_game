@@ -16,12 +16,11 @@ private:
 	int maxWidth, maxheight;
 	bool isGrow = false;
 	bool isShrink = false;
+	std::vector<Point> snakeVector;
 public:
 	Snake();
 	~Snake();
 public:
-	std::vector<Point> entire;
-	
 	void Update(float eTime);
 
 	void PushData();
@@ -46,6 +45,4 @@ public:
 
 	void Render();
 	void initBody();
-
-	void EatItem(bool fruit, bool poison);
 };

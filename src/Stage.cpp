@@ -9,26 +9,20 @@ Stage::Stage(int nextStage) {
 Stage::~Stage() {
 }
 
-int Stage::getNowStage() const { 
+int& Stage::GetNowStage() { 
     return nowStage; 
 }
 
-const int* Stage::getNowMission() const {
+const int* Stage::GetNowMission() const {
     return mission[nowStage]; 
 }
 
-int const Stage::getMissionData(int index) const {
-    return getNowMission()[index];
+int const Stage::GetMissionData(int index) const {
+    return GetNowMission()[index];
 }
 
-void Stage::setNowStage(int nowStage) { 
-    this->nowStage = nowStage; 
+void Stage::Update(float eTime) {
 }
 
-void Stage::Update(float eTime)
-{
-}
-
-void Stage::Render()
-{
+void Stage::Render() {
 }

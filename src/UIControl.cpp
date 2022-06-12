@@ -7,8 +7,8 @@
 #include "Stage.h"
 #include "UIControl.h"
 
-extern ScoreInfo *player;
-extern Stage *stage;
+extern ScoreInfo* scoreInfo;
+extern Stage* stage;
 
 UIControl::UIControl() {
     gameStartTime = -1;
@@ -38,7 +38,7 @@ void UIControl::DrawScore() {
         addch('-');
     }
 
-    int digit = 100, totalScore = player->GetTotalScore();
+    int digit = 100, totalScore = scoreInfo->GetTotalScore();
 
     for (int i = 0; i < 3; ++i) {
         int digitScore;
@@ -108,7 +108,7 @@ char UIControl::Complete(int present, int goal) {
 }
 
 void UIControl::DrawMission() {
-    const int* nowMission = stage->getNowMission();
+    const int* nowMission = stage->GetNowMission();
 
     move(maxHeight / 2, maxWidth / 5 * 4 + 1);
     printw("< M I S S I O N >");
@@ -120,16 +120,16 @@ void UIControl::DrawMission() {
     }
 
     move(22, maxWidth / 5 * 4 + 4);
-    printw("Length : %d/%d (%c)", player->GetLengthScore(), nowMission[0], Complete(player->GetLengthScore(), nowMission[0]));
+    printw("Length : %d/%d (%c)", scoreInfo->GetLengthScore(), nowMission[0], Complete(scoreInfo->GetLengthScore(), nowMission[0]));
 
     move(24, maxWidth / 5 * 4 + 4);
-    printw("Fruit : %d/%d (%c)", player->GetGrowScore(), nowMission[1], Complete(player->GetGrowScore(), nowMission[1]));
+    printw("Fruit : %d/%d (%c)", scoreInfo->GetGrowScore(), nowMission[1], Complete(scoreInfo->GetGrowScore(), nowMission[1]));
 
     move(26, maxWidth / 5 * 4 + 4);
-    printw("Poison : %d/%d (%c)", player->GetPoisonScore(), nowMission[2], Complete(player->GetPoisonScore(), nowMission[2]));
+    printw("Poison : %d/%d (%c)", scoreInfo->GetPoisonScore(), nowMission[2], Complete(scoreInfo->GetPoisonScore(), nowMission[2]));
 
     move(28, maxWidth / 5 * 4 + 4);
-    printw("Gate : %d/%d (%c)", player->GetGateScore(), nowMission[3], Complete(player->GetGateScore(), nowMission[3]));
+    printw("Gate : %d/%d (%c)", scoreInfo->GetGateScore(), nowMission[3], Complete(scoreInfo->GetGateScore(), nowMission[3]));
 
     for (int i = 0; i < 26; ++i)
     {

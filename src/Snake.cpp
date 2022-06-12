@@ -19,19 +19,19 @@ Snake::~Snake() {
 }
 
 void Snake::PushData() {
-    for (int i = 0; i < entire.size(); ++i) {
+    for (int i = 0; i < snakeVector.size(); ++i) {
         if (i == 0) {
-            mapManager->UpdateData(entire[i].y, entire[i].x, '3');
+            mapManager->UpdateData(snakeVector[i].y, snakeVector[i].x, '3');
         }
         else {
-            mapManager->UpdateData(entire[i].y, entire[i].x, '4');
+            mapManager->UpdateData(snakeVector[i].y, snakeVector[i].x, '4');
         }
     }
 }
 
 void Snake::initBody() {
     for (int i = 0; i < 5; ++i) {
-        entire.push_back(Point(15 + i, 20));
+        snakeVector.push_back(Point(15 + i, 20));
     }
 }
 
@@ -76,7 +76,7 @@ void Snake::Update(float eTime) {
         break;
     }
 
-    if (entire.size() <= 3)
+    if (snakeVector.size() <= 3)
     {
         isDead = true;
     }
@@ -85,19 +85,19 @@ void Snake::Update(float eTime) {
     {
         if (direction == 'l')
         {
-            entire.insert(entire.begin(), Point(entire[0].x - 1, entire[0].y));
+            snakeVector.insert(snakeVector.begin(), Point(snakeVector[0].x - 1, snakeVector[0].y));
         }
         else if (direction == 'r')
         {
-            entire.insert(entire.begin(), Point(entire[0].x + 1, entire[0].y));
+            snakeVector.insert(snakeVector.begin(), Point(snakeVector[0].x + 1, snakeVector[0].y));
         }
         else if (direction == 'u')
         {
-            entire.insert(entire.begin(), Point(entire[0].x, entire[0].y - 1));
+            snakeVector.insert(snakeVector.begin(), Point(snakeVector[0].x, snakeVector[0].y - 1));
         }
         else if (direction == 'd')
         {
-            entire.insert(entire.begin(), Point(entire[0].x, entire[0].y + 1));
+            snakeVector.insert(snakeVector.begin(), Point(snakeVector[0].x, snakeVector[0].y + 1));
         }
         if (isGrow == false)
         {
@@ -122,14 +122,14 @@ bool Snake::IsCollision()
 
 void Snake::SetHeadPos(int y, int x)
 {
-    entire[0].x = x;
-    entire[0].y = y;
+    snakeVector[0].x = x;
+    snakeVector[0].y = y;
 }
 
 void Snake::CutTail()
 {
-    mapManager->UpdateData(entire[entire.size() - 1].y, entire[entire.size() - 1].x, '0');
-    entire.pop_back();
+    mapManager->UpdateData(snakeVector[snakeVector.size() - 1].y, snakeVector[snakeVector.size() - 1].x, '0');
+    snakeVector.pop_back();
 }
 
 void Snake::Grow()
@@ -152,17 +152,17 @@ int Snake::GetDirection() const {
 }
 
 int Snake::GetSize() {
-    return entire.size();
+    return snakeVector.size();
 }
 
 Point Snake::GetHead()
 {
-    return entire[0];
+    return snakeVector[0];
 }
 
 Point Snake::GetTail()
 {
-    return entire[entire.size() - 1];
+    return snakeVector[snakeVector.size() - 1];
 }
 
 void Snake::Render()

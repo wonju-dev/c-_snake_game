@@ -12,8 +12,7 @@ int currentHeight;
 
 std::chrono::steady_clock::time_point startTime;
 
-void Init()
-{
+void Init() {
 	startTime = std::chrono::steady_clock::now();
 	nowScene = new WaitingScene();
 }

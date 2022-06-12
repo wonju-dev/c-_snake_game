@@ -26,8 +26,7 @@ void WaitingScene::Update(float eTime)
     if (answer == 'n')
         exit(0);
 
-    stage->setNowStage(0);
-
+    stage->GetNowStage() = 0;
     ChangeScene(new GameScene());
 }
 
@@ -37,14 +36,15 @@ void WaitingScene::Render()
 
 void WaitingScene::ClearCentre(float x, float y)
 {
+    int maxHeight, maxWidth;
     clear(); 
     initscr();
     noecho();
-    getmaxyx(stdscr, maxheight, maxWidth);
+    getmaxyx(stdscr, maxHeight, maxWidth);
 
     getmaxyx(stdscr, currentHeight, currentWidth);
 
-    move((maxheight / y), (maxWidth / x));
+    move((maxHeight / y), (maxWidth / x));
 }
 
 int WaitingScene::UserInput()
@@ -101,7 +101,7 @@ int WaitingScene::IsUserReady()
 
     Load();
 
-    move(25, 20);
+    move(25, 18);
     printw("Press any key to start");
     move(30, 14);
     return UserInput();

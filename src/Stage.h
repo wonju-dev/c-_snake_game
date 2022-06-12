@@ -9,18 +9,15 @@ private:
 		{7, 2, 3, 3},
 		{8, 3, 3, 3},
 	};
-public:
 	int nowStage;
 	bool clear;
-
+public:
 	Stage(int nextStage = 0);
 	~Stage();
-
-	int getNowStage() const;
-	const int* getNowMission() const;
-	int const getMissionData(int index) const;
-
-	void setNowStage(int nowStage);
+public:
+	int& GetNowStage();
+	const int* GetNowMission() const;
+	int const GetMissionData(int index) const;
 
 	void Update(float eTime);
 
