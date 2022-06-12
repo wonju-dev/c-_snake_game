@@ -3,11 +3,11 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-#include "Player.h"
+#include "ScoreInfo.h"
 #include "Stage.h"
 #include "Format.h"
 
-extern Player *player;
+extern ScoreInfo *player;
 extern Stage *stage;
 
 Format::Format() {

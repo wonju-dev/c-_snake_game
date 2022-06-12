@@ -5,7 +5,7 @@
 #include "ItemManager.h"
 #include "Utils.h"
 #include "IObject.h"
-#include "Player.h"
+#include "ScoreInfo.h"
 #include "MapManager.h"
 #include "Point.h"
 #include "Stage.h"
@@ -19,14 +19,14 @@ using namespace std;
 extern Stage *stage;
 
 MapManager *mapManager;
-Player* player;
+ScoreInfo* player;
 Snake* snake;
 
 GameScene::GameScene()
 {
   srand(time(NULL));
 
-  player = new Player();
+  player = new ScoreInfo();
 
   mapManager = new MapManager();
   mapManager->Load();

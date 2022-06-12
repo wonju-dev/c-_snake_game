@@ -8,8 +8,7 @@
 extern MapManager* mapManager;
 extern Snake* snake;
 
-Point Item::getRandPosition()
-{
+Point Item::getRandPosition() {
     Point temp;
 
     while (true) {

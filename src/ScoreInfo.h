@@ -1,7 +1,6 @@
 #pragma once
 
-class Player
-{
+class ScoreInfo {
 private:
     int lengthScore;
     int growScore;
@@ -9,8 +8,8 @@ private:
     int gateScore;
     int totalScore;
 public:
-    Player();
-    ~Player();
+    ScoreInfo();
+    ~ScoreInfo();
 public:
     int& GetLengthScore();
     int& GetGrowScore();
