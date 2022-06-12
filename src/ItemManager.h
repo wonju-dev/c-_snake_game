@@ -1,6 +1,6 @@
 #pragma once
 
-class Item;
+#include "Item.h"
 #include "IObject.h"
 #include <vector>
 #include <string>
@@ -18,7 +18,7 @@ public:
 
     void Render();
     void Update(float dt);
-    void PositionItem(std::string check, float dt);
+    void CreateItem(ItemType type, float dt);
     void DeleteCollisionData(int y, int x);
 
     void PushData();

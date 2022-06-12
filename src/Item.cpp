@@ -37,6 +37,14 @@ Item::Item(ItemType t, float dt) : type(t), dropTime(dt) {
     position.y = temp.y;
 }
 
+float Item::GetDropTime() const {
+    return dropTime;
+}
+
+ItemType Item::GetItemType() const {
+    return type;
+}
+
 Item::~Item() {
 }
 

@@ -11,16 +11,19 @@ enum class ItemType {
 };
 
 class Item : public IObject {
-public:
-    float dropTime = 0;
+private:
+    float dropTime;
     ItemType type = ItemType::None;
+public:
+    float GetDropTime() const;
+    ItemType GetItemType() const;
 
-    Item(ItemType t, float eTime);
+    Item(ItemType t, float dt);
     ~Item();
 
     Point position;
     Point getRandPosition();
 
-    void Update(float eTime);
+    void Update(float dt);
     void Render();
 };

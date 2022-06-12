@@ -20,7 +20,7 @@ void ItemManager::Render() {
 }
 
 bool isExceedTime(Item item, float dt) {
-    if (dt - item.dropTime > 10) {
+    if (dt - item.GetDropTime() > 10) {
         return true;
     }
     return false;
@@ -45,11 +45,11 @@ void ItemManager::Update(float dt) {
         int randNum = rand() % 2;
         if (randNum == 0)
         {
-            PositionItem("poison", dt);
+            CreateItem(ItemType::Poision, dt);
         }
         else
         {
-            PositionItem("fruit", dt);
+            CreateItem(ItemType::Fruit, dt);
         }
         PushData();
         lastDropTime = dt;
@@ -76,21 +76,16 @@ void ItemManager::Update(float dt) {
     PushData();
 }
 
-void ItemManager::PositionItem(std::string check, float dt) {
-    if (check == "fruit") {
-        data.push_back(Item(ItemType::Fruit, dt));
-    }
-    else if (check == "poison") {
-        data.push_back(Item(ItemType::Poision, dt));
-    }
+void ItemManager::CreateItem(ItemType type, float dt) {
+    data.push_back(Item(type, dt));
 }
 
 void ItemManager::PushData() {
     for (int i = 0; i < data.size(); ++i) {
-        if (data[i].type == ItemType::Fruit) {
+        if (data[i].GetItemType() == ItemType::Fruit) {
             mapManager->UpdateData(data[i].position.y, data[i].position.x, '5');
         }
-        else if (data[i].type == ItemType::Poision) {
+        else if (data[i].GetItemType() == ItemType::Poision) {
             mapManager->UpdateData(data[i].position.y, data[i].position.x, '6');
         }
     }
