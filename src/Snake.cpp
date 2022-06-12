@@ -18,14 +18,13 @@ Snake::Snake()
 Snake::~Snake() {
 }
 
-void Snake::PushData()
-{
+void Snake::PushData() {
     for (int i = 0; i < entire.size(); ++i) {
         if (i == 0) {
-            mapManager->PatchData(entire[i].y, entire[i].x, '3');
+            mapManager->UpdateData(entire[i].y, entire[i].x, '3');
         }
         else {
-            mapManager->PatchData(entire[i].y, entire[i].x, '4');
+            mapManager->UpdateData(entire[i].y, entire[i].x, '4');
         }
     }
 }
@@ -114,7 +113,7 @@ void Snake::Update(float eTime) {
 bool Snake::IsCollision()
 {
     Point head = GetHead();
-    if (mapManager->data[head.y][head.x] != '0')
+    if (mapManager->GetMapData(head.y, head.x) != '0')
     {
         return true;
     }
@@ -129,7 +128,7 @@ void Snake::SetHeadPos(int y, int x)
 
 void Snake::CutTail()
 {
-    mapManager->PatchData(entire[entire.size() - 1].y, entire[entire.size() - 1].x, '0');
+    mapManager->UpdateData(entire[entire.size() - 1].y, entire[entire.size() - 1].x, '0');
     entire.pop_back();
 }
 

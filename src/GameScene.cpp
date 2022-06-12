@@ -67,7 +67,7 @@ void GameScene::ProcessCollision()
   int y = snake->GetHead().y;
   int x = snake->GetHead().x;
 
-  char temp = mapManager->data[y][x];
+  char temp = mapManager->GetMapData(y, x);
 
   if (temp == '1' || snake->entire.size() <= 4)
   {
@@ -134,7 +134,7 @@ void GameScene::Render()
 
   for (int i = 0; i < HEIGHT; i++) {
     for (int j = 0; j < WIDTH; j++) {
-      int spriteIndex = mapManager->data[i][j] - '0';
+      int spriteIndex = mapManager->GetMapData(i, j) - '0';
       if (spriteIndex >= 0 && spriteIndex <= 8) {
         mvaddch(i, j, spriteTable[spriteIndex]);
       }

@@ -16,7 +16,7 @@ Point Item::getRandPosition()
         int x = rand() % (WIDTH);
         int y = rand() % (HEIGHT);
 
-        if (mapManager->data[y][x] == '0') {
+        if (mapManager->GetMapData(y, x) == '0') {
             float distFromHead = GetDistance(Point(x, y), snake->GetHead());
             float distFromTail = GetDistance(Point(x, y), snake->GetTail());
             int snakeSize = snake->GetSize();

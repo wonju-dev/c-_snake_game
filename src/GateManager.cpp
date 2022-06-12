@@ -17,7 +17,7 @@ Point GateManager::getRandPosition()
     while (true) {
         int x = rand() % (WIDTH);
         int y = rand() % (HEIGHT);
-        if (mapManager->data[y][x] == '1')
+        if (mapManager->GetMapData(y, x) == '1')
         {
             temp.x = x;
             temp.y = y;
@@ -70,83 +70,65 @@ Point GateManager::GetNextGate()
 
     char direction = snake->GetDirection();
 
-    if (mapManager->data[tempPosY + 1][tempPosX] == '0')
-    {
+    if (mapManager->GetMapData(tempPosY + 1, tempPosX) == '0') {
         possibleDown = true;
     }
-    if (mapManager->data[tempPosY][tempPosX + 1] == '0')
-    {
+    if (mapManager->GetMapData(tempPosY, tempPosX + 1) == '0') {
         possibleRight = true;
     }
-    if (mapManager->data[tempPosY - 1][tempPosX] == '0')
-    {
+    if (mapManager->GetMapData(tempPosY - 1, tempPosX) == '0') {
         possibleUp = true;
     }
-    if (mapManager->data[tempPosY][tempPosX - 1] == '0')
-    {
+    if (mapManager->GetMapData(tempPosY, tempPosX - 1) == '0') {
         possibleLeft = true;
     }
 
-    if (possibleLeft && direction == 'l')
-    {
+    if (possibleLeft && direction == 'l') {
         tempPosX -= 1;
     }
-    else if (possibleRight && direction == 'r')
-    {
+    else if (possibleRight && direction == 'r') {
         tempPosX += 1;
     }
-    else if (possibleUp && direction == 'u')
-    {
+    else if (possibleUp && direction == 'u') {
         tempPosY -= 1;
     }
-    else if (possibleDown && direction == 'd')
-    {
+    else if (possibleDown && direction == 'd') {
         tempPosY += 1;
     }
 
-    else if (direction == 'u' || direction == 'd')
-    {
-        if (possibleLeft)
-        {
+    else if (direction == 'u' || direction == 'd') {
+        if (possibleLeft) {
             tempPosX -= 1;
             snake->SetDirection('l');
         }
-        else if (possibleRight)
-        {
+        else if (possibleRight) {
             tempPosX += 1;
             snake->SetDirection('r');
         }
-        else if (possibleUp)
-        {
+        else if (possibleUp) {
             tempPosY -= 1;
             snake->SetDirection('u');
         }
-        else if (possibleDown)
-        {
+        else if (possibleDown) {
             tempPosY += 1;
             snake->SetDirection('d');
         }
     }
 
-    else if (direction == 'l' || direction == 'r')
-    {
-        if (possibleDown)
-        {
+    else if (direction == 'l' || direction == 'r') {
+        if (possibleDown) {
             tempPosY += 1;
             snake->SetDirection('d');
         }
-        else if (possibleUp)
-        {
+        else if (possibleUp) {
             tempPosY -= 1;
             snake->SetDirection('u');
         }
-        else if (possibleLeft)
-        {
+        else if (possibleLeft) {
             tempPosX -= 1;
             snake->SetDirection('l');
         }
-        else if (possibleRight)
-        {
+        else if (possibleRight) {
             tempPosX += 1;
             snake->SetDirection('r');
         }
@@ -163,19 +145,15 @@ void GateManager::Update(float eTime)
     int *temp = new int[data.size()];
     vector<Point>::iterator iter;
 
-    if (isEntering)
-    {
+    if (isEntering) {
         Point tail = snake->GetTail();
-        if (nextPos.x == tail.x && nextPos.y == tail.y)
-        {
+        if (nextPos.x == tail.x && nextPos.y == tail.y) {
             isRemove = true;
         }
 
-        if (isRemove == true)
-        {
-            for (int i = data.size() - 1; i >= 0; i--)
-            {
-                mapManager->PatchData(data[i].y, data[i].x, '1');
+        if (isRemove == true) {
+            for (int i = data.size() - 1; i >= 0; --i) {
+                mapManager->UpdateData(data[i].y, data[i].x, '1');
                 data.pop_back();
             }
             isCreated = false;
@@ -184,11 +162,9 @@ void GateManager::Update(float eTime)
             lastDropTime = eTime;
         }
     }
-    else if (isCreated == true && isEntering == false && eTime - lastDropTime > DROP_GATE_INTERVAL)
-    {
-        for (int i = data.size() - 1; i >= 0; i--)
-        {
-            mapManager->PatchData(data[i].y, data[i].x, '1');
+    else if (isCreated == true && isEntering == false && eTime - lastDropTime > DROP_GATE_INTERVAL) {
+        for (int i = data.size() - 1; i >= 0; i--) {
+            mapManager->UpdateData(data[i].y, data[i].x, '1');
             data.pop_back();
         }
         isCreated = false;
@@ -196,8 +172,7 @@ void GateManager::Update(float eTime)
 
     PushData();
 
-    if (eTime - lastDropTime > DROP_GATE_INTERVAL && isEntering == false && snake->entire.size() >= 4)
-    {
+    if (eTime - lastDropTime > DROP_GATE_INTERVAL && isEntering == false && snake->entire.size() >= 4) {
         if (isCreated == false)
         {
             PositionGate();
@@ -220,6 +195,6 @@ void GateManager::PositionGate() {
 
 void GateManager::PushData() {
     for (int i = 0; i < data.size(); i++) {
-        mapManager->PatchData(data[i].y, data[i].x, '7');
+        mapManager->UpdateData(data[i].y, data[i].x, '7');
     }
 }

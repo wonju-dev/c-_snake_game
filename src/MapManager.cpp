@@ -41,6 +41,14 @@ void MapManager::UpdateData(int y, int x, char newData) {
     mapData[y][x] = newData;
 }
 
+char MapManager::GetMapData(int r, int c) const {
+    return mapData[r][c];
+}
+
+float MapManager::GetLastDropTime() const {
+    return lastDropTime;
+}
+
 MapManager::~MapManager()
 {
 }

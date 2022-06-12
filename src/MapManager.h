@@ -10,7 +10,7 @@
 #include <ctime>
 
 class MapManager : public IObject {
-public:
+private:
     char mapData[HEIGHT][WIDTH];
     float lastDropTime;
 public:
@@ -22,6 +22,9 @@ public:
 
     void* GetData();
     void UpdateData(int y, int x, char newData);
+
+    char GetMapData(int r, int c) const;
+    float GetLastDropTime() const;
 
     void Print();
     void Load();

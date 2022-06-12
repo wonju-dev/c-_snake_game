@@ -74,7 +74,7 @@ void ItemManager::Update(float dt)
     for (int i = data.size() - 1; i >= 0; --i)
     {
         if (temp[i] == 1) {
-            mapManager->PatchData(data[i].position.y, data[i].position.x, '0');
+            mapManager->UpdateData(data[i].position.y, data[i].position.x, '0');
             data.erase(data.begin() + i);
         }
     }
@@ -98,10 +98,10 @@ void ItemManager::PushData()
 {
     for (int i = 0; i < data.size(); ++i) {
         if (data[i].type == "fruit") {
-            mapManager->PatchData(data[i].position.y, data[i].position.x, '5');
+            mapManager->UpdateData(data[i].position.y, data[i].position.x, '5');
         }
         else if (data[i].type == "poison") {
-            mapManager->PatchData(data[i].position.y, data[i].position.x, '6');
+            mapManager->UpdateData(data[i].position.y, data[i].position.x, '6');
         }
     }
 }
