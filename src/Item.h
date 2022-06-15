@@ -6,7 +6,7 @@
 
 enum class ItemType {
     None,
-    Poision,
+    Poison,
     Fruit
 };
 

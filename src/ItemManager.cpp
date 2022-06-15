@@ -41,7 +41,7 @@ void ItemManager::Update(float dt) {
     if (dt - lastDropTime > DROP_ITEM_INTERVAL) {
         int randNum = GetRandomNumber(0, 2);
         if (randNum == 0) {
-            CreateItem(ItemType::Poision, dt);
+            CreateItem(ItemType::Poison, dt);
         }
         else {
             CreateItem(ItemType::Fruit, dt);
