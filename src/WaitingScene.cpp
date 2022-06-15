@@ -21,9 +21,9 @@ WaitingScene::~WaitingScene()
 
 void WaitingScene::Update(float eTime)
 {
-    char answer;
+    string answer;
     answer = IsUserReady();
-    if (answer == 'n')
+    if (answer.length() == 0)
         exit(0);
 
     stage->GetNowStage() = 0;
